@@ -21,7 +21,7 @@ export const UserStarred = ({ username }) => {
       data={data}
       renderItem={renderItem}
       keyExtractor={(item, index) => index}
-      ListFooterComponent={<Text>No More Starred</Text>}
+      ListFooterComponent={<Text>No More Starred Repos</Text>}
     />
   );
 };

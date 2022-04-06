@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
+    flex: 1,
   },
   row__heading: {
     fontWeight: 'bold',

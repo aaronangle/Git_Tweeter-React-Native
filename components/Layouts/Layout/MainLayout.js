@@ -16,7 +16,8 @@ export const MainLayout = ({ children }) => {
 
 const styles = StyleSheet.create({
   cont__main: {
-    marginBottom: 100,
+    flex: 1,
+    marginBottom: 405,
   },
   scroll: {
     height: '100%',

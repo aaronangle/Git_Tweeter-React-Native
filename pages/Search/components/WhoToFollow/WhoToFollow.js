@@ -38,6 +38,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#f5f8fa',
     margin: 10,
     marginTop: 30,
+    minHeight: 300,
+    marginTop: 20,
   },
   card__header: {
     fontSize: 24,

@@ -28,13 +28,15 @@ export const Profile = () => {
   }
 
   return (
-    <>
+    <View>
       <UserInfo user={data}>
         <SelectBar selectedView={selectedView} setSelectedView={setSelectedView} />
       </UserInfo>
       {selectedView === 'events' && <UserEvents username={username} />}
-      {selectedView === 'repos' && <UserRepos username={username} />}
+      {selectedView === 'repos' && (
+        <UserRepos username={username} style={{ flex: 1, height: '100%' }} />
+      )}
       {selectedView === 'starred' && <UserStarred username={username} />}
-    </>
+    </View>
   );
 };
