@@ -1,5 +1,6 @@
 import { FlatList, Text } from 'react-native';
 import { Spinner } from '../../../../components/Elements/Spinner';
+import { PageFooter } from '../../../../components/Layouts/PageFooter';
 
 import { useRepos } from '../../api/getRepos';
 
@@ -21,7 +22,7 @@ export const UserRepos = ({ username }) => {
         data={data}
         renderItem={renderItem}
         keyExtractor={(item, index) => index}
-        ListFooterComponent={<Text>No More Repos</Text>}
+        ListFooterComponent={<PageFooter>No More Repos</PageFooter>}
       />
     </>
   );

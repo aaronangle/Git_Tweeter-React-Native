@@ -2,8 +2,13 @@ import { useInfiniteQuery } from 'react-query';
 
 import { axios } from '../../../lib/axios';
 
-export const getEvents = ({ pageParam = 1 }) => {
-  return axios.get(`/events?page=${pageParam}`).catch((err) => console.error(err));
+export const getEvents = async ({ pageParam = 1 }) => {
+  const data = await axios.get(`/events?page=${pageParam}`);
+  console.warn(data.status);
+  if (!data) {
+    throw new Error('Too many API requests');
+  }
+  return data;
 };
 
 export const useEvents = (pageCount) => {
@@ -15,6 +20,7 @@ export const useEvents = (pageCount) => {
         return false;
       }
     },
-    staleTime: 300000,
+    // staleTime: 300000,
+    staleTime: 0,
   });
 };

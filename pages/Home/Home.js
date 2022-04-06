@@ -10,12 +10,14 @@ import { Spinner } from '../../components/Elements/Spinner';
 
 import { useEvents } from './api/getEvents';
 
+import { useQuery } from 'react-query';
+
 const renderitem = ({ item }) => <HomeRow item={item} />;
 
 export const Home = () => {
   const [pageCount, setPageCount] = useState(2);
 
-  const { data, error, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
+  const { data, error, fetchNextPage, hasNextPage, isFetchingNextPage, status, isError } =
     useEvents(pageCount);
 
   const loadMore = () => {
@@ -26,7 +28,7 @@ export const Home = () => {
   };
 
   if (status === 'loading') return <Spinner />;
-  if (status === 'error') return <Text>Error: {error.message}</Text>;
+  if (error) return <Text>Error: {error.message}</Text>;
   return (
     <PageContainer>
       <PageHeader>Latest Events</PageHeader>

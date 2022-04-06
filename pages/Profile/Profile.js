@@ -8,8 +8,7 @@ import { SelectBar } from './components/SelectBar/SelectBar';
 import { UserEvents } from './components/UserEvents/UserEvents';
 import { UserRepos } from './components/UserRepos/UserRepos';
 import { UserStarred } from './components/UserStarred/UserStarred';
-
-import { PageHeader } from '../../components/Layouts/PageHeader';
+import { UserNotFound } from './components/UserNotFound/UserNotFound';
 
 import { useUser } from './api/getUser';
 
@@ -23,7 +22,7 @@ export const Profile = () => {
 
   if (isError) return <Text>{error.message}</Text>;
 
-  if (!data.login) {
+  if (!data || !data.login) {
     return <UserNotFound username={username} />;
   }
 

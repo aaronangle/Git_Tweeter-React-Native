@@ -4,10 +4,12 @@ import { View, StyleSheet, ScrollView, FlatList } from 'react-native';
 export const MainLayout = ({ children }) => {
   return (
     <View style={styles.cont}>
-      <View>
-        <View style={styles.scroll}>
-          <View style={styles.cont__main}>{children}</View>
-        </View>
+      <View style={styles.scroll}>
+        <FlatList
+          data={[{}]}
+          keyExtractor={() => null}
+          renderItem={() => <View style={styles.cont__main}>{children}</View>}
+        />
         <NavigationBar />
       </View>
     </View>
@@ -17,7 +19,7 @@ export const MainLayout = ({ children }) => {
 const styles = StyleSheet.create({
   cont__main: {
     flex: 1,
-    marginBottom: 405,
+    marginBottom: 40,
   },
   scroll: {
     height: '100%',

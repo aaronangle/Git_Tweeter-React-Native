@@ -14,7 +14,7 @@ export const UserInfo = ({ user, children }) => {
         <Text style={styles.cont__username}>@{user.login}</Text>
         <Text>{user.bio}</Text>
         <View style={styles.cont__details}>
-          {user.blog && (
+          {user.blog ? (
             <View style={styles.cont__details}>
               <Image
                 source={require('../../../../assets/link-regular-24.png')}
@@ -29,8 +29,8 @@ export const UserInfo = ({ user, children }) => {
                 {user.blog}
               </Text>
             </View>
-          )}
-          {user.company && (
+          ) : null}
+          {user.company ? (
             <View style={styles.cont__details}>
               <Image
                 source={require('../../../../assets/briefcase-alt-2-solid-24.png')}
@@ -38,8 +38,8 @@ export const UserInfo = ({ user, children }) => {
               />
               <Text style={styles.details__text}>{user.company}</Text>
             </View>
-          )}
-          {user.location && (
+          ) : null}
+          {user.location ? (
             <View style={styles.cont__details}>
               <Image
                 source={require('../../../../assets/map-solid-24.png')}
@@ -47,7 +47,7 @@ export const UserInfo = ({ user, children }) => {
               />
               <Text style={styles.details__text}>{user.location}</Text>
             </View>
-          )}
+          ) : null}
           <View style={styles.cont__details}>
             <Image
               source={require('../../../../assets/calendar-solid-24.png')}

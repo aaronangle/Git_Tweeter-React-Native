@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FlatList, Text } from 'react-native';
 import { useUserEvents } from '../../api/getUserEvents';
 import { Spinner } from '../../../../components/Elements/Spinner';
+import { PageFooter } from '../../../../components/Layouts/PageFooter';
 
 import Row from './Row';
 
@@ -31,7 +32,9 @@ export const UserEvents = ({ username }) => {
         renderItem={renderItem}
         onEndReached={loadMore}
         keyExtractor={(item, index) => index}
-        ListFooterComponent={isFetchingNextPage ? <Spinner /> : <Text>No More Events</Text>}
+        ListFooterComponent={
+          isFetchingNextPage ? <Spinner /> : <PageFooter>No More Events</PageFooter>
+        }
       />
     </>
   );

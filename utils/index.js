@@ -15,7 +15,7 @@ export function formatEventTime(date) {
     if (hours < 1) return 'Just Now';
     else return `${hours} ${pluralizeName('Hr', hours)}`;
   } else {
-    return eventDate.toLocaleString([], { month: 'short', day: 'numeric' });
+    return eventDate.toLocaleDateString([], { month: 'short', day: 'numeric' });
   }
 }
 
@@ -23,13 +23,13 @@ export const storage = {
   hasVisitedSite: () => {
     return JSON.parse(window.localStorage.getItem('hasVisitedSite'));
   },
-  setHasVisitedSite: value => {
+  setHasVisitedSite: (value) => {
     window.localStorage.setItem('hasVisitedSite', value);
   },
   getTheme: () => {
     return window.localStorage.getItem('mode');
   },
-  setTheme: value => {
+  setTheme: (value) => {
     window.localStorage.setItem('mode', value);
   },
 };

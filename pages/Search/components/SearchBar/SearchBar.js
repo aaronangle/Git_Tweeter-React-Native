@@ -1,11 +1,15 @@
 import React from 'react';
 import { Text, View, TextInput, StyleSheet } from 'react-native';
+import { useHistory } from '../../../../react-router';
 
 export const SearchBar = () => {
+  const history = useHistory();
   const [text, onChangeText] = React.useState('');
-  function checkit() {
-    console.log(text);
+
+  function goToUser() {
+    history.push(`/profile/${text}`);
   }
+
   return (
     <View>
       <TextInput
@@ -13,7 +17,7 @@ export const SearchBar = () => {
         onChangeText={onChangeText}
         value={text}
         placeholder="Search By GitHub Username"
-        onEndEditing={checkit}
+        onEndEditing={goToUser}
       />
     </View>
   );
