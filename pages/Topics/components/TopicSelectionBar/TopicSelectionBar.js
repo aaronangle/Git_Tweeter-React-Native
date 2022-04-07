@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 
 const topics = [
   'JavaScript',
@@ -49,17 +49,19 @@ export const TopicSelectionBar = () => {
     <>
       <View style={[styles.arrows, 'fc-row']}>
         <View style={[styles['arrow--left'], 'fc-row', 'hover']} onClick={() => scroll(true)}>
-          {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
-            <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path>
-          </svg> */}
+          <Image
+            source={require('../../../../assets/chevron-left-regular-24.png')}
+            style={styles.details__image}
+          />
         </View>
         <View
           style={[styles.arrows__arrow, styles['arrow--right'], 'fc-row', 'hover']}
           onClick={() => scroll(false)}
         >
-          {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
-            <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path>
-          </svg> */}
+          <Image
+            source={require('../../../../assets/chevron-right-regular-24.png')}
+            style={styles.details__image}
+          />
         </View>
       </View>
       <View style={styles.cont} ref={scrollRef}>
@@ -67,10 +69,7 @@ export const TopicSelectionBar = () => {
           return (
             <View
               key={topic}
-              style={joinstyles(
-                styles.box,
-                selectedTopics.includes(topic) && styles['box--selected']
-              )}
+              style={[styles.box, selectedTopics.includes(topic) && styles['box--selected']]}
               onClick={() => handleClick(topic)}
             >
               <Text style={styles['box__text']}>{topic}</Text>
@@ -81,3 +80,17 @@ export const TopicSelectionBar = () => {
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  row: {
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    flexDirection: 'row',
+    margin: 3,
+  },
+  row__image: {
+    height: 18,
+    width: 18,
+  },
+});

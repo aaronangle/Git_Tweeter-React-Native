@@ -1,9 +1,15 @@
+import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const Error = ({ children }) => {
+export const Error = ({ children }) => {
+  function goToHome() {
+    history.push('/home');
+  }
+
   return (
     <View>
       <Text style={styles.text}>{children}</Text>
+      <Button title="Go Back Home" onPress={goToHome} />
     </View>
   );
 };

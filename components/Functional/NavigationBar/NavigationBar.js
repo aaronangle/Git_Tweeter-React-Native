@@ -19,9 +19,6 @@ export const NavigationBar = () => {
       <Link to="/profile/aaronangle">
         <Text>Profile</Text>
       </Link>
-      <Link to="/settings">
-        <Text>Settings</Text>
-      </Link>
     </View>
   );
 };

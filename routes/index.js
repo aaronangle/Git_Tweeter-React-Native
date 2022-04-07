@@ -1,12 +1,10 @@
-import { Router, Route, Link, Switch } from '../react-router';
+import { Route, Switch } from '../react-router';
 
 import { Landing } from '../pages/Landing';
 import { Home } from '../pages/Home';
 import { Topics } from '../pages/Topics';
 import { Profile } from '../pages/Profile';
-import { Settings } from '../pages/Settings';
 import { MainLayout } from '../components/Layouts/Layout';
-import { Search } from '../pages/Search/Search';
 
 export const AppRoutes = () => {
   return (
@@ -17,7 +15,6 @@ export const AppRoutes = () => {
         <Route path="/search" component={Search} />
         <Route path="/topics" component={Topics} />
         <Route path="/profile/:username" component={Profile} />
-        <Route path="/settings" component={Settings} />
       </MainLayout>
     </Switch>
   );
