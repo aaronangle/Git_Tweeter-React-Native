@@ -2,9 +2,13 @@ import { useQuery } from 'react-query';
 
 import { axios } from '../../../lib/axios';
 
-export const getUser = ({ queryKey }) => {
+export const getUser = async ({ queryKey }) => {
   const username = queryKey[1];
-  return axios(`/users/${username}`);
+  const data = await axios(`/users/${username}`);
+  if (!data) {
+    throw new Error('Too many API requests');
+  }
+  return data;
 };
 
 export const useUser = (username) => {

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+
 import { Spinner } from '../../../../components/Elements/Spinner';
+import { Error } from '../../../../components/Elements/Error';
 import { Link } from '../../../../react-router';
 import { Avatar } from '../../../../components/Elements/Avatar';
 
@@ -10,7 +12,9 @@ export const WhoToFollow = () => {
   const { isLoading, isError, data, error } = useUsers();
 
   if (isLoading) return <Spinner />;
-  if (isError) return <Text>{error.message}</Text>;
+
+  if (isError) return <Error>{error.message}</Error>;
+
   return (
     <View style={styles.card}>
       <Text style={styles.card__header}>Who To Follow</Text>

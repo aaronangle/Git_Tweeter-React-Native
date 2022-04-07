@@ -2,9 +2,13 @@ import { useInfiniteQuery } from 'react-query';
 
 import { axios } from '../../../lib/axios';
 
-export const getUserEvents = ({ queryKey, pageParam = 1 }) => {
+export const getUserEvents = async ({ queryKey, pageParam = 1 }) => {
   const username = queryKey[1];
-  return axios(`/users/${username}/events?page=${pageParam}`);
+  const data = await axios(`/users/${username}/events?page=${pageParam}`);
+  if (!data) {
+    throw new Error('Too many API requests');
+  }
+  return data;
 };
 
 export const useUserEvents = (pageCount, username) => {

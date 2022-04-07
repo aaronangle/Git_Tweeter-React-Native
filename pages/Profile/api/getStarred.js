@@ -2,9 +2,13 @@ import { useQuery } from 'react-query';
 
 import { axios } from '../../../lib/axios';
 
-export const getStarred = ({ queryKey }) => {
+export const getStarred = async ({ queryKey }) => {
   const username = queryKey[1];
-  return axios(`/users/${username}/starred`);
+  const data = await axios(`/users/${username}/starred`);
+  if (!data) {
+    throw new Error('Too many API requests');
+  }
+  return data;
 };
 
 export const useStarred = (username) => {

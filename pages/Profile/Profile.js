@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { useParams } from '../../react-router';
 
 import { Spinner } from '../../components/Elements/Spinner';
+import { Error } from '../../components/Elements/Error';
 import { UserInfo } from './components/UserInfo/UserInfo';
 import { SelectBar } from './components/SelectBar/SelectBar';
 import { UserEvents } from './components/UserEvents/UserEvents';
@@ -20,7 +21,7 @@ export const Profile = () => {
 
   if (isLoading) return <Spinner />;
 
-  if (isError) return <Text>{error.message}</Text>;
+  if (isError) return <Error>{error.message}</Error>;
 
   if (!data || !data.login) {
     return <UserNotFound username={username} />;
