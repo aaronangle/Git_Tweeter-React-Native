@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, TouchableNativeFeedback } from 'react-native';
 
 const topics = [
   'JavaScript',
@@ -25,7 +25,7 @@ const topics = [
   'Swift',
 ];
 
-export const TopicSelectionBar = () => {
+export const TopicSelectionBar = ({ selectedTopics, setSelectedTopics }) => {
   const scrollRef = useRef(null);
 
   function handleClick(topic) {
@@ -46,38 +46,26 @@ export const TopicSelectionBar = () => {
   }
 
   return (
-    <>
-      <View style={[styles.arrows, 'fc-row']}>
-        <View style={[styles['arrow--left'], 'fc-row', 'hover']} onClick={() => scroll(true)}>
-          <Image
-            source={require('../../../../assets/chevron-left-regular-24.png')}
-            style={styles.details__image}
-          />
-        </View>
-        <View
-          style={[styles.arrows__arrow, styles['arrow--right'], 'fc-row', 'hover']}
-          onClick={() => scroll(false)}
-        >
-          <Image
-            source={require('../../../../assets/chevron-right-regular-24.png')}
-            style={styles.details__image}
-          />
-        </View>
-      </View>
-      <View style={styles.cont} ref={scrollRef}>
+    <ScrollView horizontal={true}>
+      <View style={styles.row} ref={scrollRef}>
         {topics.map((topic) => {
           return (
-            <View
-              key={topic}
-              style={[styles.box, selectedTopics.includes(topic) && styles['box--selected']]}
-              onClick={() => handleClick(topic)}
-            >
-              <Text style={styles['box__text']}>{topic}</Text>
-            </View>
+            <TouchableNativeFeedback key={topic} onPress={() => handleClick(topic)}>
+              <View style={[styles.box, selectedTopics.includes(topic) && styles['box--selected']]}>
+                <Text
+                  style={[
+                    styles['box__text'],
+                    selectedTopics.includes(topic) && styles['box__text--selected'],
+                  ]}
+                >
+                  {topic}
+                </Text>
+              </View>
+            </TouchableNativeFeedback>
           );
         })}
       </View>
-    </>
+    </ScrollView>
   );
 };
 
@@ -87,10 +75,28 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     flexDirection: 'row',
-    margin: 3,
+    paddingTop: 5,
+    overflow: 'scroll',
+    flexWrap: 'nowrap',
   },
-  row__image: {
-    height: 18,
-    width: 18,
+  box: {
+    padding: 10,
+    borderRadius: 9999,
+    minWidth: 80,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#f5f8fa',
+    marginRight: 5,
+  },
+  'box--selected': {
+    backgroundColor: '#1da1f2',
+  },
+  'box__text--selected': {
+    color: 'white',
+  },
+  box__text: {
+    fontSize: 20,
+    color: 'black',
   },
 });

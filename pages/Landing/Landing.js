@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, Button, Animated, Easing, Linking } from 'react-native';
 import { useHistory } from '../../react-router';
+import { Link } from '../../components/Elements/Link';
 
 export const Landing = () => {
   const history = useHistory();
@@ -25,7 +26,7 @@ export const Landing = () => {
 
   const goToPortfolio = async () => {
     try {
-      await Linking.openURL('https://aaronangle.github.io/Portfolio/');
+      await Linking.openURL();
     } catch (err) {}
   };
 
@@ -45,9 +46,9 @@ export const Landing = () => {
           using GitHub's API
         </Text>
         <Button title="Continue" onPress={goToHome} />
-        <Text style={styles.main__projects} onPress={goToPortfolio}>
-          View My Other Projects
-        </Text>
+        <View style={styles.main__link}>
+          <Link url={'https://aaronangle.github.io/Portfolio/'}>View My Other Projects</Link>
+        </View>
       </View>
     </View>
   );
@@ -83,5 +84,12 @@ const styles = StyleSheet.create({
     color: '#1da1f2',
     textDecorationColor: '#1da1f2',
     textDecorationLine: 'underline',
+  },
+  main__link: {
+    marginTop: 50,
+    textAlign: 'center',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

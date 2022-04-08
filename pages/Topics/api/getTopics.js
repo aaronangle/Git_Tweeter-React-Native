@@ -8,6 +8,7 @@ export const getTopics = async ({ pageParam = 1, queryKey }) => {
   if (!data) {
     throw new Error('Too many API requests');
   }
+  console.log(data.items.filter((el) => el.display_name).length);
   return data.items.filter((el) => el.display_name);
 };
 

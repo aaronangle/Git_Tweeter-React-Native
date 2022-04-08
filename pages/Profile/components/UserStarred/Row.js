@@ -1,35 +1,45 @@
 import { memo } from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Linking, TouchableNativeFeedback } from 'react-native';
 import { RowContainer } from '../../../../components/Elements/RowContainer';
 import { Avatar } from '../../../../components/Elements/Avatar';
 import { Badge } from '../Badge/Badge';
 
 const Row = ({ item }) => {
+  const goToLink = async () => {
+    try {
+      await Linking.openURL(item.html_url);
+    } catch (err) {}
+  };
+
   return (
     <RowContainer>
-      <View style={styles.row__header}>
-        <View style={styles.row__details}>
-          <Avatar img={item.owner.avatar_url} />
-          <View style={styles.details__margin}>
-            <Text style={styles.details__heading}>{item.name}</Text>
-            <Text style={styles.details__text}>{item.language}</Text>
+      <TouchableNativeFeedback onPress={goToLink}>
+        <View>
+          <View style={styles.row__header}>
+            <View style={styles.row__details}>
+              <Avatar img={item.owner.avatar_url} />
+              <View style={styles.details__margin}>
+                <Text style={styles.details__heading}>{item.name}</Text>
+                <Text style={styles.details__text}>{item.language}</Text>
+              </View>
+            </View>
+            <View>
+              <Badge count={item.forks} />
+              <Badge isStars={true} count={item.stargazers_count} />
+            </View>
+          </View>
+          <Text>{item.description}</Text>
+          <View style={styles.topic__container}>
+            {item.topics.map((topic) => {
+              return (
+                <Text key={topic} style={styles['row__topic']}>
+                  {topic}
+                </Text>
+              );
+            })}
           </View>
         </View>
-        <View>
-          <Badge count={item.forks} />
-          <Badge isStars={true} count={item.stargazers_count} />
-        </View>
-      </View>
-      <Text>{item.description}</Text>
-      <View style={styles.topic__container}>
-        {item.topics.map((topic) => {
-          return (
-            <Text key={topic} style={styles['row__topic']}>
-              {topic}
-            </Text>
-          );
-        })}
-      </View>
+      </TouchableNativeFeedback>
     </RowContainer>
   );
 };

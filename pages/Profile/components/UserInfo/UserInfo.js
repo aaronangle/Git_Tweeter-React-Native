@@ -1,5 +1,7 @@
 import { Text, View, StyleSheet, Image } from 'react-native';
 
+import { Link } from '../../../../components/Elements/Link';
+
 import { pluralizeName } from '../../../../utils';
 
 export const UserInfo = ({ user, children }) => {
@@ -20,14 +22,9 @@ export const UserInfo = ({ user, children }) => {
                 source={require('../../../../assets/link-regular-24.png')}
                 style={styles.details__image}
               />
-              <Text
-                href={user.blog}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={styles.details__text}
-              >
+              <Link url={user.blog} style={styles.details__text}>
                 {user.blog}
-              </Text>
+              </Link>
             </View>
           ) : null}
           {user.company ? (
