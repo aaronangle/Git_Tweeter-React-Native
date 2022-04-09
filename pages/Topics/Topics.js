@@ -23,7 +23,6 @@ export const Topics = () => {
     useTopics(pageCount, query);
 
   const loadMore = () => {
-    console.log(hasNextPage);
     if (hasNextPage) {
       fetchNextPage();
       setPageCount((c) => c + 1);

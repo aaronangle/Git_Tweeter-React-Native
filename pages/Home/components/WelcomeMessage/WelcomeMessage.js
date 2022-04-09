@@ -1,18 +1,38 @@
-import React, { useState } from 'react';
-import { Text, View, Image, StyleSheet, Pressable } from 'react-native';
-import { Redirect } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Text, View, StyleSheet, Pressable } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const storeData = async (value) => {
+  try {
+    await AsyncStorage.setItem('@hideWelcome', true);
+  } catch (e) {}
+};
 
 export const WelcomeMessage = () => {
   const [showWelcome, setShowWelcome] = useState(true);
-  function onPressFunction() {
-    console.log('press');
-  }
+
+  useEffect(() => {
+    (async function () {
+      const value = await AsyncStorage.getItem('@hideWelcome');
+      if (value !== null) {
+        setShowWelcome(false);
+      }
+    })();
+  });
+
+  const storeData = async () => {
+    setShowWelcome(false);
+    try {
+      await AsyncStorage.setItem('@hideWelcome', 'true');
+    } catch (e) {}
+  };
+
   return (
     <>
       {showWelcome && (
         <>
           <View style={styles.box}>
-            <Pressable onPress={() => setShowWelcome(false)} style={styles.box__close}>
+            <Pressable onPress={() => storeData()} style={styles.box__close}>
               <Text style={styles.box__x}>X</Text>
             </Pressable>
             <Text style={styles.box__heading}>👋 Welcome to Git_Tweeter</Text>

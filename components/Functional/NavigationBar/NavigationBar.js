@@ -1,23 +1,29 @@
 import { Router, Route, Link, Switch } from '../../../react-router';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 
 export const NavigationBar = () => {
   return (
     <View style={styles.nav}>
-      <Link to="/">
-        <Text>Landing</Text>
+      <Link to="/home" underlayColor="transparent">
+        <Image
+          source={require('../../../assets/home-circle-regular-24.png')}
+          style={styles.row__image}
+        />
       </Link>
-      <Link to="/home">
-        <Text>Home</Text>
+      <Link to="/search" underlayColor="transparent">
+        <Image
+          source={require('../../../assets/search-regular-24.png')}
+          style={styles.row__image}
+        />
       </Link>
-      <Link to="/search">
-        <Text>Search</Text>
+      <Link to="/topics" underlayColor="transparent">
+        <Image source={require('../../../assets/news-regular-24.png')} style={styles.row__image} />
       </Link>
-      <Link to="/topics">
-        <Text>Topics</Text>
-      </Link>
-      <Link to="/profile/aaronangle">
-        <Text>Profile</Text>
+      <Link to="/profile/aaronangle" underlayColor="transparent">
+        <Image
+          source={require('../../../assets/user-circle-regular-24.png')}
+          style={styles.row__image}
+        />
       </Link>
     </View>
   );
