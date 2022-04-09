@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "test-publish-app",
-    "slug": "test-publish-app",
+    "name": "git-tweeter",
+    "slug": "git-tweeter",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/git_tweeter.png",
     "splash": {
-      "image": "./assets/splassh.png",
+      "image": "./assets/git_tweeter.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -14,22 +14,12 @@
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": ["**/*"],
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.pagepro.testpublishapp",
-      "buildNumber": "1.0.0"
-    },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.pagepro.testpublishapp",
+      "package": "com.ang.gittweeter",
       "versionCode": 1
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
     }
   }
 }
-//expo build:android
