@@ -2,7 +2,7 @@
   "expo": {
     "name": "git-tweeter",
     "slug": "git-tweeter",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/git_tweeter.png",
     "splash": {
@@ -15,11 +15,12 @@
     },
     "assetBundlePatterns": ["**/*"],
     "android": {
+      "permissions": [],
       "adaptiveIcon": {
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.ang.gittweeter",
-      "versionCode": 1
+      "versionCode": 2
     }
   }
 }
